@@ -7,11 +7,11 @@ package liquid_luck.sust_life;
 
 /**
  *
- * @author imehe
+ * @author Mehedi and Ataur
  */
 public class SUST_Life {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("WELCOME TO SUST LIFE!");
     }
 }
