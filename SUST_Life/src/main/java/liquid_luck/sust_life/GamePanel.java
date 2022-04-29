@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  */
 
 // Extending JPanel with some extra functions
-public class GamePanel extends JPanel{
+public class GamePanel extends JPanel implements Runnable{
     final int originalTileSize = 32;
     final int scale = 2;
     
@@ -30,4 +30,18 @@ public class GamePanel extends JPanel{
         this.setBackground(Color.green);
         this.setDoubleBuffered(true);
     }
+    
+    Thread gameThread;
+    
+    public void startGameThread() {
+        gameThread = new Thread(this);
+        gameThread.start();
+    }
+
+    @Override
+    public void run() {
+       
+    }
+    
+    
 }
