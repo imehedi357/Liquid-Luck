@@ -28,5 +28,8 @@ public class SUST_Life {
         
         window.setLocationRelativeTo(null);
         window.setVisible(true);
+
+        // Running the Gameloop
+        gamePanel.startGameThread();
     }
 }
