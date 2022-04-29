@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author imehe
+ * @author Mehedi and Ataur
  */
 
 // Extending JPanel with some extra functions
@@ -20,7 +20,7 @@ public class GamePanel extends JPanel{
     
     final int tileSize = originalTileSize * scale;
     final int maxScreenCol = 16;
-    final int maxScreenRow = 12;
+    final int maxScreenRow = 9;
     
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
