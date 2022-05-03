@@ -17,6 +17,7 @@ import javax.swing.*;
  * Liquid Luck
  * @author Mehedi and Ataur
  * CSE, SUST
+ * Bangladesh
  */
 public class SUST_Life {
 
