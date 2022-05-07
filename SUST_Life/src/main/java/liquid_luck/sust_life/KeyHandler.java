@@ -1,4 +1,4 @@
-package cars;
+package liquid_luck.sust_life;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

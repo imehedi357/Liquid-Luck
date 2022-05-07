@@ -11,6 +11,8 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import liquid_luck.sprites.Player;
+
 /**
  *
  * @author Mehedi and Ataur
@@ -21,19 +23,25 @@ public class GamePanel extends JPanel implements Runnable{
     
     final int originalTileSize = 32;
     final int scale = 3;
+    final int FPS = 60;
     
-    final int tileSize = originalTileSize * scale;
+    public  int tileSize = originalTileSize * scale;
     final int maxScreenCol = 13;
     final int maxScreenRow = 8;
     
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
+
+    KeyHandler keyH = new KeyHandler();
+    Player player = new Player(this, keyH);
     
     public GamePanel() {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.green);
         this.setDoubleBuffered(true);
+        this.addKeyListener(keyH);
+        this.setFocusable(true);
     }
     
     Thread gameThread;
@@ -46,20 +54,46 @@ public class GamePanel extends JPanel implements Runnable{
 
     @Override
     public void run() {
+
+        // FPS control
+        double drawInterval = 1000000000/FPS;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
+        long timer = 0;
+        int drawcount = 0;
         
         while(gameThread != null) {
 
-            //System.out.println("The game is running!");
-            // TODO:
-            // 1. Update : update information
-            update();
-            // 2. Draw : to call the paintComponent method
-            repaint();
+            currentTime = System.nanoTime();
+
+            delta += (currentTime - lastTime) / drawInterval;
+            timer += (currentTime - lastTime);
+            lastTime = currentTime;
+
+            if(delta >= 1) {
+                //System.out.println("The game is running!");
+                // TODO:
+                // 1. Update : update information
+                update();
+                // 2. Draw : to call the paintComponent method
+                repaint();
+                
+                delta--;
+                drawcount++;
+            }
+
+            // Show FPS every 1 second
+            if(timer >= 1e9) {
+                System.out.println("FPS: " + drawcount);
+                drawcount = 0;
+                timer = 0;
+            }
         }
     }
 
     public void update() {
-
+        player.update();
     }
 
     public void paintComponent(Graphics g) {
@@ -68,8 +102,7 @@ public class GamePanel extends JPanel implements Runnable{
 
         Graphics2D g2 = (Graphics2D)g;
 
-        g2.setColor(Color.white);
-        g2.fillRect(100, 100, tileSize, tileSize);
+        player.draw(g2);
 
         // To save memory;
         g2.dispose();

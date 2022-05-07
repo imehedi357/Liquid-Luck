@@ -6,10 +6,6 @@
 package liquid_luck.sust_life;
 
 import javax.swing.JFrame;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.*;
 
 
 /**
@@ -38,6 +34,5 @@ public class SUST_Life {
         // Running the Gameloop
         gamePanel.startGameThread();
         
-        PongGameFrame pongFrame = new PongGameFrame();
     }
 }
