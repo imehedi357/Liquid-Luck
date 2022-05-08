@@ -4,7 +4,6 @@
  */
 package liquid_luck.sust_life;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -22,7 +21,7 @@ import liquid_luck.sprites.Player;
 public class GamePanel extends JPanel implements Runnable{
     
     final int originalTileSize = 32;
-    final int scale = 3;
+    public int scale = 3;
     final int FPS = 60;
     
     public  int tileSize = originalTileSize * scale;
@@ -38,7 +37,6 @@ public class GamePanel extends JPanel implements Runnable{
     public GamePanel() {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        this.setBackground(Color.green);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
