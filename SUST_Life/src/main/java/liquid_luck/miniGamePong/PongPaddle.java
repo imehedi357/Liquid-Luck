@@ -38,16 +38,16 @@ public class PongPaddle extends Rectangle{
                     move();
                 }
                 break;
-//            case 2:
-//                if(e.getKeyCode()==KeyEvent.VK_UP){
-//                    setYdirection(-speed);
-//                    move();
-//                }
-//                if(e.getKeyCode()==KeyEvent.VK_DOWN){
-//                    setYdirection(speed);
-//                    move();
-//                }
-//                break;
+           case 2:
+               if(e.getKeyCode()==KeyEvent.VK_UP){
+                   setYdirection(-speed);
+                   move();
+               }
+               if(e.getKeyCode()==KeyEvent.VK_DOWN){
+                   setYdirection(speed);
+                   move();
+               }
+               break;
             
         }
     }
@@ -87,7 +87,7 @@ public class PongPaddle extends Rectangle{
     
     public void draw(Graphics g){
         if(id==1){
-            g.setColor(Color.blue);
+            g.setColor(Color.red);
         }
         else{
             g.setColor(Color.red);
