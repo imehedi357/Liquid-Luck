@@ -4,11 +4,9 @@
  */
 package liquid_luck.miniGamePong;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.*;
 
 /**
  *
@@ -18,7 +16,7 @@ public class PongGameFrame extends JFrame{
     
     PongGamePanel pongPanel;
     
-    PongGameFrame(){
+    public PongGameFrame(){
         pongPanel = new PongGamePanel();
         this.add(pongPanel);
         this.setTitle("PongGame");
@@ -28,5 +26,7 @@ public class PongGameFrame extends JFrame{
         this.pack();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+
+
     }
 }

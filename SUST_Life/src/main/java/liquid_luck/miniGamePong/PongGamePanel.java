@@ -39,7 +39,7 @@ public class PongGamePanel extends JPanel implements Runnable{
     Random random;
     
     
-    PongGamePanel(){
+    public PongGamePanel(){
         newPaddle();
         newBall();
         score = new PongScore(GAME_WIDTH, GAME_HEIGHT);
