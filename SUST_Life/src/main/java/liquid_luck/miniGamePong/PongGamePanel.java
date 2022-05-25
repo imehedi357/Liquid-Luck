@@ -37,6 +37,7 @@ public class PongGamePanel extends JPanel implements Runnable{
     PongBall ball;
     PongScore score;
     Random random;
+    public int paddleMoveSpeed = 4;
     
     
     public PongGamePanel(){
@@ -115,6 +116,7 @@ public class PongGamePanel extends JPanel implements Runnable{
             ball.xVelocity = Math.abs(ball.xVelocity);
             // Optional
             ball.xVelocity++; 
+            paddleMoveSpeed++;
             if(ball.yVelocity > 0) ball.yVelocity++;
             else ball.yVelocity--;
             ball.setXdirection(ball.xVelocity);
@@ -123,7 +125,8 @@ public class PongGamePanel extends JPanel implements Runnable{
         if(ball.intersects(paddle2)){
             ball.xVelocity = Math.abs(ball.xVelocity);
             // Optional
-            ball.xVelocity++; 
+            ball.xVelocity++;
+            paddleMoveSpeed++; 
             if(ball.yVelocity > 0) ball.yVelocity++;
             else ball.yVelocity--;
             ball.setXdirection(-ball.xVelocity);
@@ -148,50 +151,54 @@ public class PongGamePanel extends JPanel implements Runnable{
         // Give a player 1 point and creates new paddle and ball
         if(ball.x <= 0){
             score.player2++;
+            paddleMoveSpeed = 4;
             newPaddle();
             newBall();
-            System.out.println("Player2 : " + score.player2);
+            //System.out.println("Player2 : " + score.player2);
         }
         if(ball.x >= GAME_WIDTH-BALL_DIAMETER){
             score.player1++;
+            paddleMoveSpeed = 4;
             newPaddle();
             newBall();
-            System.out.println("Player1 : " + score.player1);
+            //System.out.println("Player1 : " + score.player1);
         }
         
         // Handle 2nd paddle
         // Still to fix some cases but i am both tired and bored
-        int ycorBall=0;
+        
+        //System.out.println(yin400 + " " + yin880);
+        int ycorBall = ball.y;
         if(ball.x==650) ycorBall=ball.y;
         if(ball.xVelocity>=0 && ball.x>=610 && ball.x<=850){
             if(ball.yVelocity < 0){
                 if(ycorBall>=0 && ycorBall<=150){
                     if(paddle2.y<=460){
-                        paddle2.y-=3;
+                        paddle2.y-=paddleMoveSpeed;
                         move();
                     }
                     else{
-                        paddle2.y+=4;
+                        paddle2.y+=paddleMoveSpeed;
                         move();
                     }
                 }
                 if(ycorBall>=151 && ycorBall<=320){
                     if(paddle2.y<=180){
-                        paddle2.y-=3;
+                        paddle2.y-=paddleMoveSpeed;
                         move();
                     }
                     else{
-                        paddle2.y+=4;
+                        paddle2.y+=paddleMoveSpeed;
                         move();
                     }
                 }
                 if(ycorBall>=321 && ycorBall<=490){
                     if(paddle2.y<=40){
-                        paddle2.y+=4;
+                        paddle2.y+=paddleMoveSpeed;
                         move();
                     }
                     else{
-                        paddle2.y-=3;
+                        paddle2.y-=paddleMoveSpeed;
                         move();
                     }
                 }
@@ -199,35 +206,36 @@ public class PongGamePanel extends JPanel implements Runnable{
             else{
                 if(ycorBall>=0 && ycorBall<=150){
                     if(paddle2.y>=460){
-                        paddle2.y-=3;
+                        paddle2.y-=paddleMoveSpeed;
                         move();
                     }
-                    else{
-                        paddle2.y+=4;
+                    else if(paddle2.y<=360){
+                        paddle2.y+=paddleMoveSpeed;
                         move();
                     }
                 }
                 if(ycorBall>=151 && ycorBall<=320){
                     if(paddle2.y<=180){
-                        paddle2.y-=3;
+                        paddle2.y-=paddleMoveSpeed;
                         move();
                     }
                     else{
-                        paddle2.y+=4;
+                        paddle2.y+=paddleMoveSpeed;
                         move();
                     }
                 }
                 if(ycorBall>=321 && ycorBall<=499){
                     if(paddle2.y<=40){
-                        paddle2.y-=3;
+                        paddle2.y-=paddleMoveSpeed;
                         move();
                     }
                     else{
-                        paddle2.y+=4;
+                        paddle2.y+=paddleMoveSpeed;
                         move();
                     }
                 }
             }
+             
         }
         
         
@@ -255,6 +263,7 @@ public class PongGamePanel extends JPanel implements Runnable{
                 checkCollision();
                 repaint();
                 delta--;
+                
             }
         }
     }

@@ -21,7 +21,7 @@ public class PongGameFrame extends JFrame{
         this.add(pongPanel);
         this.setTitle("PongGame");
         this.setResizable(false);
-        this.setBackground(Color.black);
+        this.setBackground(new Color(12,29,65));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
         this.setVisible(true);

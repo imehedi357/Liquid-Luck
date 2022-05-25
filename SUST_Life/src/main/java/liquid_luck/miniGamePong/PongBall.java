@@ -17,8 +17,8 @@ import javax.swing.*;
 public class PongBall extends Rectangle {
     
     Random random;
-    int xVelocity;
-    int yVelocity;
+    int xVelocity=0;
+    int yVelocity=0;
     int initialSpeed = 3;
     
     PongBall(int x, int y, int width, int height){
