@@ -11,6 +11,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import liquid_luck.sprites.Player;
+import liquid_luck.tile.TileManager;
 
 /**
  *
@@ -20,17 +21,18 @@ import liquid_luck.sprites.Player;
 // Extending JPanel with some extra functions
 public class GamePanel extends JPanel implements Runnable{
     
-    final int originalTileSize = 32;
+    final int originalTileSize = 16;
     public int scale = 3;
     final int FPS = 60;
     
     public  int tileSize = originalTileSize * scale;
-    final int maxScreenCol = 13;
-    final int maxScreenRow = 8;
+    public int maxScreenCol = 26;
+    public int maxScreenRow = 16;
     
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
 
+    TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
     Player player = new Player(this, keyH);
     
@@ -100,6 +102,7 @@ public class GamePanel extends JPanel implements Runnable{
 
         Graphics2D g2 = (Graphics2D)g;
 
+        tileM.draw(g2);
         player.draw(g2);
 
         // To save memory;

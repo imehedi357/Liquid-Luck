@@ -26,8 +26,8 @@ public class Player extends Sprites {
     }
     
     public void setDefaultValues() {
-        x = 100;
-        y = 100;
+        x = 300;
+        y = 500;
         speed = 3;
     }
     
@@ -36,7 +36,7 @@ public class Player extends Sprites {
 
         try {
             
-            BufferedImage img = ImageIO.read(getClass().getResourceAsStream("/player.png"));
+            BufferedImage img = ImageIO.read(getClass().getResourceAsStream("/zack_vai.png"));
 
             p = new BufferedImage[4][4];
 
@@ -67,25 +67,26 @@ public class Player extends Sprites {
     }
 
     public void update() {
-        if(keyH.up == true) {
+        if(keyH.up == true && y + collusionAreaY1 >= 0) {
             y -= speed;
             updateAnimation(2);
         }
-        else if(keyH.down == true) {
+        else if(keyH.down == true && y + collusionAreaY2 <= 8 * 32 * 3) {
             y += speed;
             updateAnimation(0);
         }
-        else if(keyH.left == true) {
+        else if(keyH.left == true && x + collusionAreaX1 >= 0) {
             x -= speed;
             updateAnimation(3);
         }
-        else if(keyH.right == true) {
+        else if(keyH.right == true && x + collusionAreaX2 <= 13 * 32 * 3) {
             x += speed;
             updateAnimation(1);
         }
         else {
             updateAnimation(-1);
         }
+        // System.out.println(x + " " + y);
     }
 
     BufferedImage startingBack;
@@ -100,6 +101,6 @@ public class Player extends Sprites {
     public void draw(Graphics2D g2) {
 
         g2.drawImage(startingBack, 0, 0,startingBack.getWidth() * gp.scale, startingBack.getHeight() * gp.scale, null);
-        g2.drawImage(p[dir][aniIndex], x, y, 16 * 3, gp.tileSize, null);
+        g2.drawImage(p[dir][aniIndex], x, y, 16 * 3, 32 * 3, null);
     }
 }

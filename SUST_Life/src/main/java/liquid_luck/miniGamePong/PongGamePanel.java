@@ -40,7 +40,7 @@ public class PongGamePanel extends JPanel implements Runnable{
     public int paddleMoveSpeed = 4;
     
     
-    PongGamePanel(){
+    public PongGamePanel(){
         newPaddle();
         newBall();
         score = new PongScore(GAME_WIDTH, GAME_HEIGHT);
