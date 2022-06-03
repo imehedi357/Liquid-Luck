@@ -13,8 +13,8 @@ import liquid_luck.sust_life.GamePanel;
 public class TileManager {
     
     GamePanel gp;
-    Tile[] tiles;
-    int map[][];
+    public Tile[] tiles;
+    public int map[][];
 
     public TileManager(GamePanel gp) {
 

@@ -67,7 +67,7 @@ public class Player extends Sprites {
     }
 
     public void update() {
-        if(keyH.up == true && y + collusionAreaY1 >= 0) {
+        if(keyH.up == true && y + collusionAreaY1 >= 0 && gp.collusionChecker.checkTile(this, 1)) {
             y -= speed;
             updateAnimation(2);
         }
@@ -100,7 +100,7 @@ public class Player extends Sprites {
     }
     public void draw(Graphics2D g2) {
 
-        g2.drawImage(startingBack, 0, 0,startingBack.getWidth() * gp.scale, startingBack.getHeight() * gp.scale, null);
+        //g2.drawImage(startingBack, 0, 0,startingBack.getWidth() * gp.scale, startingBack.getHeight() * gp.scale, null);
         g2.drawImage(p[dir][aniIndex], x, y, 16 * 3, 32 * 3, null);
     }
 }

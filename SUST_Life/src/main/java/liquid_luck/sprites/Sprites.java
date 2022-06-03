@@ -1,6 +1,7 @@
 package liquid_luck.sprites;
 
 import java.awt.image.BufferedImage;
+import java.awt.*;
 
 // Super Class of the Player and NPCs
 public class Sprites {
