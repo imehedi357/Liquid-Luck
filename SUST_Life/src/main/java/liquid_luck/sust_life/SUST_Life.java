@@ -1,11 +1,10 @@
- /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
- */
+
 
 package liquid_luck.sust_life;
 
 import javax.swing.JFrame;
+
+import liquid_luck.miniGamePong.PongGameFrame;
 
 
 /**
@@ -33,6 +32,8 @@ public class SUST_Life {
 
         // Running the Gameloop
         gamePanel.startGameThread();
+        //PongGameFrame pongFrame = new PongGameFrame();
+        new PongGameFrame();
         
     }
 }
